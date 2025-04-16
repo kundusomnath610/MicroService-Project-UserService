@@ -15,8 +15,6 @@ import com.kundu.user.service.exception.ResourceNotFoundException;
 import com.kundu.user.service.repositories.UserRepositories;
 import com.kundu.user.service.services.UserServies;
 
-import io.micrometer.core.instrument.Meter.Id;
-
 @Service
 public class UserServiceImpl implements UserServies{
 
