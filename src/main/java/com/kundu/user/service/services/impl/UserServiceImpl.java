@@ -11,8 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kundu.user.service.entities.User;
+import com.kundu.user.service.exception.ResourceNotFoundException;
 import com.kundu.user.service.repositories.UserRepositories;
 import com.kundu.user.service.services.UserServies;
+
+import io.micrometer.core.instrument.Meter.Id;
 
 @Service
 public class UserServiceImpl implements UserServies{
@@ -22,32 +25,30 @@ public class UserServiceImpl implements UserServies{
 
     @Override
     public User savUser(User user) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'savUser'");
+        return userRepositories.save(user);
     }
 
     @Override
     public List<User> getAllUsers() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllUsers'");
+        return userRepositories.findAll();
     }
 
     @Override
-    public User getUser(String UserId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUser'");
+    public User getUser(String userId) {
+        return userRepositories.findById(userId).orElseThrow(() -> 
+        new ResourceNotFoundException("User with given id is not found!! " + userId));
     }
 
     @Override
-    public void deletUser(String UserId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletUser'");
+    public User deleteUser(String userId) {
+        return userRepositories.deleteById(userId)
+            .orElseThrow(() -> 
+            new ResourceNotFoundException("User with given id is not found!! " + userId));
     }
 
     @Override
     public User updatUser(String UserId, User user) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updatUser'");
+        return userRepositories.findById(UserId).get();
     }
 
     

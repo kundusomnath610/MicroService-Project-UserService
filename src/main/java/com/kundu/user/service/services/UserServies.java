@@ -20,7 +20,7 @@ public interface UserServies {
     User getUser(String UserId);
 
     //Delete User
-    void deletUser(String UserId);
+    User deleteUser(String UserId);
 
     // Update User
     User updatUser(String UserId, User user); 
