@@ -1,3 +1,8 @@
+/*
+ * For Properties Handel
+ * And Create Schema in DataBase
+ */
+
 package com.kundu.user.service.entities;
 
 import jakarta.persistence.Column;
