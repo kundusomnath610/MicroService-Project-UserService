@@ -24,7 +24,7 @@ public class User {
     @Column(name = "CITY")
     private String city;
 
-    @Column(name = "Email")
+    @Column(name = "Email", unique = true)
     private String email;
 
     @Column(name = "ABOUT")
